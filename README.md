@@ -275,3 +275,68 @@ To make bigger or smaller steps in a sequence, use the seq() function:
 ```
 
 `NOTE:` The `seq()` function has three parameters: `from` is where the sequence starts, `to` is where the sequence stops, and `by` is the interval of the sequence.
+
+### R LISTS
+
+A list in R can contain many different data types inside it. A list is a collection of data which is ordered and changeable.
+
+To create a list, use the list() function:
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> thislist 
+[[1]]
+[1] "apple"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "cherry"
+>
+```
+
+#### Access Lists:
+
+You can access the list items by referring to its index number, inside brackets. The first item has index 1, the second item has index 2, and so on:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> thislist[1] 
+[[1]]
+[1] "apple"
+
+>
+```
+#### Change Item Value
+
+To change the value of a specific item, refer to the index number:
+```R
+> thislist <- list("apple", "banana", "cherry")
+> thislist[1] <- "blackcurrant"
+> 
+> thislist 
+[[1]]
+[1] "blackcurrant"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "cherry"
+
+> 
+```
+
+#### List Length:
+
+To find out how many items a list has, use the length() function:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> length(thislist) 
+[1] 3
+> 
+```
