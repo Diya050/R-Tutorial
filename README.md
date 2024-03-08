@@ -108,7 +108,8 @@ R has following types of operators:
 
 ## Data Structures in R
 
-![image](https://github.com/Diya050/R-Tutorial/assets/124448340/7e1b8c2d-85de-4f1b-81fb-e023b73e7ece)
+![image](https://github.com/Diya050/R-Tutorial/assets/124448340/02430e15-c2b3-457f-a43a-ec3f91a5fca2)
+
 <br><br>
 
 ### R VECTOR
