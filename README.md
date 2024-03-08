@@ -340,3 +340,155 @@ To find out how many items a list has, use the length() function:
 [1] 3
 > 
 ```
+
+#### Check if Item Exists:
+
+To find out if a specified item is present in a list, use the %in% operator:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> "apple" %in% thislist 
+[1] TRUE
+> 
+> "mango" %in% thislist
+[1] FALSE
+> 
+```
+
+#### Add List Items:
+
+To add an item to the end of the list, use the append() function:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> append(thislist, "orange") 
+[[1]]
+[1] "apple"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "cherry"
+
+[[4]]
+[1] "orange"
+
+> 
+```
+
+To add an item to the right of a specified index, add "after=index number" in the append() function:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> append(thislist, "orange", after = 2) 
+[[1]]
+[1] "apple"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "orange"
+
+[[4]]
+[1] "cherry"
+
+>
+```
+
+#### Remove List Items:
+
+You can also remove list items. The following example creates a new, updated list without an "apple" item:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> newlist <- thislist[-1]
+> 
+> newlist 
+[[1]]
+[1] "banana"
+
+[[2]]
+[1] "cherry"
+
+> 
+```
+
+#### Range of Indexes
+
+You can specify a range of indexes by specifying where to start and where to end the range, by using the : operator:
+
+```R
+> thislist <- list("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+> 
+> (thislist)[2:5] 
+[[1]]
+[1] "banana"
+
+[[2]]
+[1] "cherry"
+
+[[3]]
+[1] "orange"
+
+[[4]]
+[1] "kiwi"
+
+> 
+```
+`NOTE:` The search will start at `index 2 (included)` and end at `index 5 (included)`. Remember that the first item has index 1.
+
+
+#### Loop Through a List:
+
+You can loop through the list items by using a for loop:
+
+```R
+> thislist <- list("apple", "banana", "cherry")
+> 
+> for (x in thislist) {
++     print(x)
++ } 
+[1] "apple"
+[1] "banana"
+[1] "cherry"
+> 
+```
+
+#### Join Two Lists:
+
+There are several ways to join, or concatenate, two or more lists in R.
+
+The most common way is to use the c() function, which combines two elements together:
+
+```R
+> list1 <- list("a", "b", "c")
+> list2 <- list(1,2,3)
+> list3 <- c(list1,list2)
+> 
+> list3 
+[[1]]
+[1] "a"
+
+[[2]]
+[1] "b"
+
+[[3]]
+[1] "c"
+
+[[4]]
+[1] 1
+
+[[5]]
+[1] 2
+
+[[6]]
+[1] 3
+
+> 
+```
