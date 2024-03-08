@@ -112,7 +112,7 @@ R has following types of operators:
 
 <br><br>
 
-### R VECTOR
+### R VECTORS
 
 A vector is simply a list of items that are of the same type.
 
@@ -262,7 +262,7 @@ To repeat vectors, use the rep() function:
 > 
 ```
 
-### **Generating Sequenced Vectors:**
+#### **Generating Sequenced Vectors:**
 
 To make bigger or smaller steps in a sequence, use the seq() function:
 
