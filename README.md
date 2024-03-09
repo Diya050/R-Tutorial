@@ -492,3 +492,343 @@ The most common way is to use the c() function, which combines two elements toge
 
 > 
 ```
+
+### R MATRICES
+
+A matrix is a two dimensional data set with columns and rows.
+A column is a vertical representation of data, while a row is a horizontal representation of data.
+A matrix can be created with the matrix() function. Specify the nrow and ncol parameters to get the amount of rows and columns:
+
+```R
+> thismatrix <- matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+> 
+> thismatrix 
+     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+>
+```
+`NOTE:` Remember the `c()` function is used to concatenate items together.
+
+You can also create a matrix with strings:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> thismatrix 
+     [,1]     [,2]    
+[1,] "apple"  "cherry"
+[2,] "banana" "orange"
+> 
+```
+
+#### Access Matrix Items:
+
+You can access the items by using [ ] brackets. The first number "1" in the bracket specifies the row-position, while the second number "2" specifies the column-position: 
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> thismatrix[1, 2]
+[1] "cherry"
+> 
+```
+The whole row can be accessed if you specify a comma after the number in the bracket:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> thismatrix[2,]
+[1] "banana" "orange"
+>
+```
+The whole column can be accessed if you specify a comma before the number in the bracket:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> thismatrix[,2]
+[1] "cherry" "orange"
+> 
+```
+#### Access More Than One Row:
+
+More than one row can be accessed if you use the c() function:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange","grape", "pineapple", "pear", "melon", "fig"), nrow = 3, ncol = 3)
+> 
+> thismatrix[c(1,2),] 
+     [,1]     [,2]     [,3]   
+[1,] "apple"  "orange" "pear" 
+[2,] "banana" "grape"  "melon"
+>
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange","grape", "pineapple", "pear", "melon", "fig"), nrow = 3, ncol = 3)
+> 
+> thismatrix[c(1,2,3),] 
+     [,1]     [,2]        [,3]   
+[1,] "apple"  "orange"    "pear" 
+[2,] "banana" "grape"     "melon"
+[3,] "cherry" "pineapple" "fig"  
+> 
+```
+
+#### Access More Than One Column
+
+More than one column can be accessed if you use the c() function:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange","grape", "pineapple", "pear", "melon", "fig"), nrow = 3, ncol = 3)
+> 
+> thismatrix[, c(1,2)] 
+     [,1]     [,2]       
+[1,] "apple"  "orange"   
+[2,] "banana" "grape"    
+[3,] "cherry" "pineapple"
+>
+```
+
+#### Add Rows and Columns
+
+Use the cbind() function to add additional columns in a Matrix:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange","grape", "pineapple", "pear", "melon", "fig"), nrow = 3, ncol = 3)
+> 
+> newmatrix <- cbind(thismatrix, c("strawberry", "blueberry", "raspberry"))
+> 
+> newmatrix
+     [,1]     [,2]        [,3]    [,4]        
+[1,] "apple"  "orange"    "pear"  "strawberry"
+[2,] "banana" "grape"     "melon" "blueberry" 
+[3,] "cherry" "pineapple" "fig"   "raspberry" 
+> 
+```
+`NOTE:` The cells in the new column must be of the `same length` as the existing matrix.
+
+Use the rbind() function to add additional rows in a Matrix:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange","grape", "pineapple", "pear", "melon", "fig"), nrow = 3, ncol = 3)
+> 
+> newmatrix <- rbind(thismatrix, c("strawberry", "blueberry", "raspberry"))
+> 
+> newmatrix 
+     [,1]         [,2]        [,3]       
+[1,] "apple"      "orange"    "pear"     
+[2,] "banana"     "grape"     "melon"    
+[3,] "cherry"     "pineapple" "fig"      
+[4,] "strawberry" "blueberry" "raspberry"
+> 
+```
+`NOTE:` The cells in the new row must be of the same length as the existing matrix.
+
+#### Remove Rows and Columns:
+
+Use the c() function to remove rows and columns in a Matrix:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange", "mango", "pineapple"), nrow = 3, ncol =2)
+> 
+> #Remove the first row and the first column
+> thismatrix <- thismatrix[-c(1), -c(1)]
+> 
+> thismatrix 
+[1] "mango"     "pineapple"
+> 
+```
+
+#### Check if an Item Exists:
+
+To find out if a specified item is present in a matrix, use the %in% operator:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> "apple" %in% thismatrix 
+[1] TRUE
+> 
+```
+
+#### Number of Rows and Columns:
+
+Use the dim() function to find the number of rows and columns in a Matrix:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> dim(thismatrix) 
+[1] 2 2
+> 
+```
+
+#### Matrix Length:
+
+Use the length() function to find the dimension of a Matrix:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> length(thismatrix)
+[1] 4
+>
+```
+`NOTE:` Total cells in the matrix is the number of rows multiplied by number of columns.
+In the example above: `Dimension = 2*2 = 4`.
+
+#### Loop Through a Matrix:
+
+You can loop through a Matrix using a for loop. The loop will start at the first row, moving right:
+
+```R
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> 
+> for (rows in 1:nrow(thismatrix)) {
++     for (columns in 1:ncol(thismatrix)) {
++         print(thismatrix[rows, columns])
++     }
++ } 
+[1] "apple"
+[1] "cherry"
+[1] "banana"
+[1] "orange"
+> 
+```
+
+#### Combine two Matrices:
+
+Again, you can use the rbind() or cbind() function to combine two or more matrices together:
+
+```R
+> 
+> # Combine matrices
+> Matrix1 <- matrix(c("apple", "banana", "cherry", "grape"), nrow = 2, ncol = 2)
+> Matrix2 <- matrix(c("orange", "mango", "pineapple", "watermelon"), nrow = 2, ncol = 2)
+> 
+> # Adding it as a rows
+> Matrix_Combined <- rbind(Matrix1, Matrix2)
+> Matrix_Combined
+     [,1]     [,2]        
+[1,] "apple"  "cherry"    
+[2,] "banana" "grape"     
+[3,] "orange" "pineapple" 
+[4,] "mango"  "watermelon"
+> 
+> # Adding it as a columns
+> Matrix_Combined <- cbind(Matrix1, Matrix2)
+> Matrix_Combined 
+     [,1]     [,2]     [,3]     [,4]        
+[1,] "apple"  "cherry" "orange" "pineapple" 
+[2,] "banana" "grape"  "mango"  "watermelon"
+> 
+```
+
+### R ARRAYS
+
+![image](https://github.com/Diya050/R-Tutorial/assets/124448340/35bad528-1d74-40ae-8843-a96a15bceb20)
+
+Compared to matrices, arrays can have more than two dimensions.
+We can use the array() function to create an array, and the dim parameter to specify the dimensions:
+
+```R
+> # An array with one dimension with values ranging from 1 to 24
+> thisarray <- c(1:24)
+> thisarray
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18
+[19] 19 20 21 22 23 24
+> 
+> # An array with more than one dimension
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> multiarray 
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]   13   17   21
+[2,]   14   18   22
+[3,]   15   19   23
+[4,]   16   20   24
+
+> 
+```
+
+**Example Explained:**
+
+In the example above we create an array with the values 1 to 24.
+
+How does `dim=c(4,3,2)` work?
+The first and second number in the bracket specifies the amount of rows and columns.
+The last number in the bracket specifies how many dimensions we want.
+
+`NOTE:` Arrays can only have one data type.
+
+#### Access Array Items:
+
+You can access the array elements by referring to the index position. You can use the [] brackets to access the desired elements from an array:
+
+```R
+> thisarray <- c(1:24)
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> 
+> multiarray[2, 3, 2] 
+[1] 22
+> 
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
+
+
+```R
+
+```
