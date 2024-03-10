@@ -276,6 +276,20 @@ To make bigger or smaller steps in a sequence, use the seq() function:
 
 `NOTE:` The `seq()` function has three parameters: `from` is where the sequence starts, `to` is where the sequence stops, and `by` is the interval of the sequence.
 
+If we store different types of data in a vector, then datatype is decided according to precedence:
+```R
+> vec1 <- c(1,"a",T)
+> 
+> vec1
+[1] "1"    "a"    "TRUE"
+> 
+> vec2 <- c(1,T,2,F)
+> 
+> vec2
+[1] 1 1 2 0
+>
+```
+
 ### R LISTS
 
 A list in R can contain many different data types inside it. A list is a collection of data which is ordered and changeable.
@@ -294,6 +308,23 @@ To create a list, use the list() function:
 [[3]]
 [1] "cherry"
 >
+```
+To make a list of vectors:
+
+```R
+> l1 <- list(c(1,2,3), c("a","b","c"), c(T,F,T))
+> 
+> l1
+[[1]]
+[1] 1 2 3
+
+[[2]]
+[1] "a" "b" "c"
+
+[[3]]
+[1]  TRUE FALSE  TRUE
+
+> 
 ```
 
 #### Access Lists:
@@ -500,13 +531,36 @@ A column is a vertical representation of data, while a row is a horizontal repre
 A matrix can be created with the matrix() function. Specify the nrow and ncol parameters to get the amount of rows and columns:
 
 ```R
-> thismatrix <- matrix(c(1,2,3,4,5,6), nrow = 3, ncol = 2)
+> m1 <- matrix(c(1,2,3,4,5,6))
+> m1
+     [,1]
+[1,]    1
+[2,]    2
+[3,]    3
+[4,]    4
+[5,]    5
+[6,]    6
 > 
-> thismatrix 
-     [,1] [,2]
-[1,]    1    4
-[2,]    2    5
-[3,]    3    6
+```
+
+```R
+> thismatrix <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
+> 
+> thismatrix
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+> 
+```
+If you want the elements to be arranged row-wise:
+
+```R
+> thismatrix <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3, byrow = T)
+> 
+> thismatrix
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
 >
 ```
 `NOTE:` Remember the `c()` function is used to concatenate items together.
@@ -732,6 +786,28 @@ Compared to matrices, arrays can have more than two dimensions.
 We can use the array() function to create an array, and the dim parameter to specify the dimensions:
 
 ```R
+> vec1 <- c(1,2,3,4,5,6)
+> vec2 <- c(7,8,9,10,11,12)
+>
+> arr <- array(c(vec1,vec2), dim = c(2,3,2))
+>
+> arr
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]    7    9   11
+[2,]    8   10   12
+
+> 
+```
+
+```R
 > # An array with one dimension with values ranging from 1 to 24
 > thisarray <- c(1:24)
 > thisarray
@@ -782,53 +858,74 @@ You can access the array elements by referring to the index position. You can us
 [1] 22
 > 
 ```
+The syntax is as follow: array[row position, column position, matrix level]
 
+You can also access the whole row or column from a matrix in an array, by using the c() function:
 
 ```R
+> thisarray <- c(1:24)
+> 
+> # Access all the items from the first row from matrix one
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> multiarray[c(1),,1]
+[1] 1 5 9
+> 
+> # Access all the items from the first column from matrix one
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> multiarray[,c(1),1] 
+[1] 1 2 3 4
+> 
+```
+`NOTE:` A comma (,) before c() means that we want to access the column.
+A comma (,) after c() means that we want to access the row.
 
+#### Check if an Item Exists:
+
+To find out if a specified item is present in an array, use the %in% operator:
+
+```R
+> thisarray <- c(1:24)
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> 
+> 2 %in% multiarray 
+[1] TRUE
+> 
 ```
 
+#### Amount of Rows and Columns:
+
+Use the dim() function to find the amount of rows and columns in an array:
 
 ```R
+> thisarray <- c(1:24)
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> 
+> dim(multiarray) 
+[1] 4 3 2
+> 
+```
+#### Array Length:
 
+Use the length() function to find the dimension of an array:
+
+```R
+> thisarray <- c(1:24)
+> multiarray <- array(thisarray, dim = c(4, 3, 2))
+> 
+> length(multiarray) 
+[1] 24
+>
 ```
 
+#### Loop Through an Array
+
+You can loop through the array items by using a for loop:
 
 ```R
+thisarray <- c(1:24)
+multiarray <- array(thisarray, dim = c(4, 3, 2))
 
-```
-
-
-```R
-
-```
-
-
-```R
-
-```
-
-
-```R
-
-```
-
-
-```R
-
-```
-
-
-```R
-
-```
-
-
-```R
-
-```
-
-
-```R
-
+for(x in multiarray){
+  print(x)
+} 
 ```
